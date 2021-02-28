@@ -21,16 +21,16 @@ class Exam extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		$this->form_validation->set_rules('phone', 'phone', 'required|integer|min_length[10]|max_length[10]');
-        $this->form_validation->set_rules('address', 'address', 'required');
+                $this->form_validation->set_rules('address', 'address', 'required');
 		if($this->form_validation->run()==FALSE) 
 		{
 			$this->load->view('register');
 		}
 		 else {
-			      $this->load->helper('url');
+			  $this->load->helper('url');
 		          $this->load->view('register');
 	              if($this->input->post('submit'))
-		          {
+		        {
 		
 		$name=$this->input->post('name');
 		$email=$this->input->post('email');
@@ -55,15 +55,14 @@ class Exam extends CI_Controller {
 	}
 
      //delete
-     public function deletedata()
+       public function deletedata()
 	{
-	    $this->load->helper('url');
-
+	        $this->load->helper('url');
 		$id=$this->input->get('id');
 		$this->exam_model->deleterecords($id);
 		redirect('Exam/display');
 		// echo "Date deleted successfully !";
-    }
+        }
 
     //update
     public function updatedata()
@@ -83,7 +82,7 @@ class Exam extends CI_Controller {
 		$address=$this->input->post('address');
 		$this->exam_model->update_records($name,$email,$password,$phone,$address,$id);
 		redirect('exam/display');
-		echo "Date updated successfully !";
+		//echo "Date updated successfully !";
 		}
 	}
 
@@ -97,7 +96,7 @@ class Exam extends CI_Controller {
 	   $this->load->helper('url');
 	   $this->load->view('show_page',$result);
 
-    $name=$this->input->post('name');
+                $name=$this->input->post('name');
 		$email=$this->input->post('email');
 		$password=$this->input->post('password');
 		$phone=$this->input->post('phone');
